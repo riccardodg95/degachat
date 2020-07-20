@@ -119,5 +119,5 @@ def del_msg():
     join_room(room)
     emit("remove_delete_button", room=room)
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     app.run()
