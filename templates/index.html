@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+<script type="text/javascript">
+  if (localStorage.getItem('user_joined_channel') !== null) {
+    var joined_channel = localStorage.getItem('user_joined_channel');
+    var loc = "/channel/"+ joined_channel;
+    window.location.href = loc;
+  }
+</script>
+
+<style>
+  input{
+    width: 35%;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    color: rgb(158, 155, 155);
+  }
+  input, select, textarea{
+    color: black;
+ }
+ .enter_button{
+   border: none;
+   height: 50px;
+   background-color: #4CAF50;
+   color: black;
+   border-radius: 12px;
+ }
+ .enter_button:hover {
+   transition-duration: 0.2s;
+   background-color: #4CAF50;
+   color: white;
+ }
+</style>
+
+
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid" style="padding: 30px">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible show" role="alert">
+                <p class="text-center">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </p>
+              </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
+    </div>
+</div>
+
+<div class="centerText" style="padding: 30px">
+  Please enter a username and start chatting!
+  <form action="{{ url_for('chat') }}" method="post">
+    <input type="text" name="username" placeholder="Username">
+    <button class="enter_button">Enter</button>
+  </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+
+<script src="/static/js/channels.js"></script>
+
+<style>
+  .create_button{
+    border: none;
+    height: 50px;
+    background-color: #4CAF50;
+    color: black;
+    border-radius: 12px;
+  }
+  .create_button:hover {
+    transition-duration: 0.2s;
+    background-color: #4CAF50;
+    color: white;
+  }
+  input{
+    width: 35%;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    color: rgb(158, 155, 155);
+  }
+  input, select, textarea{
+    color: black;
+  }
+  ul.clear {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin: 0 0 3px 0;
+  div.class:empty {
+      border: none;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="centerText" style="text-align: center; padding: 50px">
+  <div class="channel_container">
+    <b>Existing channels:</b>
+      <div>
+        <select id="channels" length="100" style="width: 200px;" onchange="redirectFunction(this)">
+          {% if channel_list %}
+            {% for channel in channel_list %}
+              <option>{{channel}}</option>
+            {% endfor %}
+          {% endif %}
+        </select>
+        <option value=""></option>
+      </div>
+    <div>
+      <b>Create new channel:</b>
+      <form id="new_channel" action="/redirect_newchannel" method="post">
+        <input id="channel" name="channel" type="text" autocomplete="on" autofocus placeholder="New channel">
+        <button class="create_button" id="submit">Create and join</button>
+      </form>
+    </div>
+  </div>
+  <div style=" font-size: 15px; padding:5px;">
+    <ul class="clear"><b>Registered users:</b>
+      {% for user in users%}
+        <li>{{user}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible show" role="alert">
+          <p class="text-center">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endwith %}
+
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+
+<script src="/static/js/channel_socket.js"></script>
+
+ <style media="screen">
+   .chat_container{
+     border: green solid 4px;
+     padding: 50px;
+     border-radius: 10px;
+     margin: auto;
+     width: 50%;
+     height: 300px;
+   }
+   .chat_input{
+     border: grey solid 2px;
+     border-radius: 10px;
+     margin: auto;
+     line-height: 2.5em;
+     width: 87%;
+     float: left;
+     margin-bottom: 5px;
+   }
+   .chat_text{
+     border: grey solid 2px;
+     border-radius: 10px;
+     margin: auto;
+     height: 76%;
+     width: 100%;
+     margin-bottom: 10px;
+   }
+  input.chat_input:focus {
+    outline-width: 0;
+   }
+   .send_button{
+     width: 70px;
+     border: none;
+     height: 2.7em;
+     background-color: #4CAF50;
+     color: black;
+     border-radius: 12px;
+   }
+   .send_button:hover {
+     transition-duration: 0.2s;
+     background-color: #4CAF50;
+     color: white;
+   }
+   .delete_button{
+     display: none;
+   }
+  .chat_text:hover .delete_button{
+     display: inline-block;
+     border: none;
+     width: 70px;
+     height: 2em;
+     font-size: 10px;
+     transition-duration: 0.2s;
+     background-color: red;
+     color: white;
+     border-radius: 12px;
+   }
+   ul.msg {
+     list-style-type: none;
+     text-align: left;
+   }
+ </style>
+
+
+{% endblock %}
+
+{% block body %}
+  <div class="centerText" style="text-align: center; padding: 50px">
+    <div>
+      You joined <b>{{joined_channel}}</b>!
+      <a href="{{url_for('chat')}}" id="leave_channel">Go back to channel list</a>
+        <div style="padding: 20px">
+          <div class="chat_container" style="text-align: center; padding: 10px">
+            <div class="chat_text" style="overflow-y: scroll;">
+              <ul id="timestamp" class="msg">
+                {% if old_msg %}
+                  {% for msg in old_msg %}
+                    <li><b>{{msg[0]}}</b>({{msg[1]}}): {{msg[2]}}</li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+            <div>
+              <form>
+                <input class="chat_input" type="text" id="chat_text" autocomplete="off" autofocus placeholder="Type here">
+                <button class="send_button" type="submit" id="chat_send">Send</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+{% endblock %}
