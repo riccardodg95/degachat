@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+
+{% block heading %}
+<style>
+  input[type=number]{
+    width: 200px;
+}
+  label {
+      display: inline-block;
+      text-align: left;
+}​
+</style>
+{% endblock %}
+
+{% block body %}
+<!-- #alert messages -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible show" role="alert">
+                <p class="text-center">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </p>
+              </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
+    </div>
+</div>
+
+<div style="text-align: center; padding: 30px">
+  <form action="{{ url_for('submitted') }}" method="post" autocomplete="on">
+    <p><input type="text" name="name" placeholder="Name" size="30"></p>
+    <p><input type="text" name="usrname" placeholder="Username" size="30"></p>
+    <p><input type="password" name="pwd" placeholder="Password: min 4 characters" size="30"></p>
+    <p><input type="number" name="age" placeholder="Your age"></p>
+    <label for="country">Your country</label>
+    <p><select name="country" length="100" style="width: 200px;">
+      <option value="America">America</option>
+      <option value="Africa">Africa</option>
+      <option value="Europe">Europe</option>
+      <option value="Asia">Asia</option>
+      <option value="Australia">Australia</option>
+    </select></p>
+    <p><button>Submit</button></p>
+  </form>
+  <p>Already registered?<a href="/">Please login</a></p>
+</div>
+{% endblock %}
