@@ -10,16 +10,30 @@
 </script>
 
 <style>
-  input{
-    width: 35%;
-    height: 50px;
-    border: 1px solid grey;
-    border-radius: 10px;
-    color: rgb(158, 155, 155);
-  }
-  input, select, textarea{
-    color: black;
- }
+@media (min-width: 500px){
+    input{
+      width: 35%;
+      height: 50px;
+      border: 1px solid grey;
+      border-radius: 10px;
+      color: rgb(158, 155, 155);
+    }
+    input, select, textarea{
+      color: black;
+   }
+}
+@media (max-width: 500px){
+    input{
+      width: 60%;
+      height: 50px;
+      border: 1px solid grey;
+      border-radius: 10px;
+      color: rgb(158, 155, 155);
+    }
+    input, select, textarea{
+      color: black;
+   }
+}
  .enter_button{
    border: none;
    height: 50px;

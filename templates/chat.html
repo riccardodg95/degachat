@@ -17,6 +17,7 @@
     background-color: #4CAF50;
     color: white;
   }
+@media (min-width: 500px){
   input{
     width: 35%;
     height: 50px;
@@ -27,6 +28,22 @@
   input, select, textarea{
     color: black;
   }
+}
+@media (max-width: 500px){
+  input{
+    width: 100%;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    color: rgb(158, 155, 155);
+  }
+  input, select, textarea{
+    color: black;
+  }
+  .input_description{
+    font-size: 15px;
+  }
+}
   ul.clear {
     list-style-type: none;
     margin: 0;
@@ -42,7 +59,7 @@
 
 <div class="centerText" style="text-align: center; padding: 50px">
   <div class="channel_container">
-    <b>Existing channels:</b>
+    <b class="input_description">Existing channels:</b>
       <div>
         <select id="channels" length="100" style="width: 200px;" onchange="redirectFunction(this)">
           {% if channel_list %}
@@ -54,7 +71,7 @@
         <option value=""></option>
       </div>
     <div>
-      <b>Create new channel:</b>
+      <b class="input_description">Create new channel:</b>
       <form id="new_channel" action="/redirect_newchannel" method="post">
         <input id="channel" name="channel" type="text" autocomplete="on" autofocus placeholder="New channel">
         <button class="create_button" id="submit">Create and join</button>

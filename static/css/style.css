@@ -1,3 +1,4 @@
+@media (min-width: 500px){
 .header{
   font-family: Arial, Helvetica, sans-serif;
   padding: 30px;
@@ -9,17 +10,33 @@
   width: 100%;
   border: 2px solid black;
 }
+}
+@media (max-width: 500px){
+  .header{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 25px;
+    text-align: left;
+    display: block;
+    margin: auto;
+    background: linear-gradient(rgb(75, 66, 245), white);
+    font-size: 25px;
+    width: 100%;
+    border: 2px solid black;
+  }
+}
 .sub_header{
   font-family: Arial, Helvetica, sans-serif;
-  padding: 20px;
+  padding: 10px;
   display: inline-block;
   float: right;
+  font-size: 10px;
 }
 .centerText{
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   /* color: rgb(158, 155, 155); */
   font-size: 20px;
+
 }
 .channel_container{
   border: grey solid 2px;

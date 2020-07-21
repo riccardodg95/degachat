@@ -36,6 +36,9 @@ def chat():
         if len(username) < 4:
             flash('Username must be at least 4 characters long')
             return redirect("/")
+        elif len(username) > 13:
+            flash('Please enter a shorter username')
+            return redirect("/")
         elif username in session['users']:
             flash('This username already exists')
             return redirect("/")

@@ -5,6 +5,7 @@
 <script src="/static/js/channel_socket.js"></script>
 
  <style media="screen">
+@media (min-width: 500px){
    .chat_container{
      border: green solid 4px;
      padding: 50px;
@@ -30,6 +31,54 @@
      width: 100%;
      margin-bottom: 10px;
    }
+   ul.msg {
+     list-style-type: none;
+     text-align: left;
+   }
+   .channel_description{
+   }
+ }
+ @media (max-width: 500px){
+  .chat_container{
+    border: green solid 4px;
+    padding: 50px;
+    border-radius: 10px;
+    margin: 0px;
+    width: 100%;
+    height: 400px;
+  }
+  .chat_input{
+    padding: 10px;
+    border: grey solid 2px;
+    border-radius: 10px;
+    /* margin: auto; */
+    line-height: 1.6em;
+    width: 60%;
+    float: left;
+    /* margin-bottom: 5px; */
+  }
+  .chat_text{
+    border: grey solid 2px;
+    border-radius: 10px;
+    margin: auto;
+    height: 82%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .msg{
+    font-size: 10px;
+  }
+  ul.msg {
+    list-style-type: none;
+    text-align: left;
+    margin: 5px;
+    padding: 5px;;
+  }
+  .channel_description{
+    font-size: 15px;
+  }
+}
+
   input.chat_input:focus {
     outline-width: 0;
    }
@@ -60,10 +109,6 @@
      color: white;
      border-radius: 12px;
    }
-   ul.msg {
-     list-style-type: none;
-     text-align: left;
-   }
  </style>
 
 
@@ -71,7 +116,7 @@
 
 {% block body %}
   <div class="centerText" style="text-align: center; padding: 50px">
-    <div>
+    <div class="channel_description">
       You joined <b>{{joined_channel}}</b>!
       <a href="{{url_for('chat')}}" id="leave_channel">Go back to channel list</a>
         <div style="padding: 20px">
