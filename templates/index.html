@@ -12,7 +12,7 @@
 <style>
 @media (min-width: 500px){
     input{
-      width: 35%;
+      width: 15%;
       height: 50px;
       border: 1px solid grey;
       border-radius: 10px;
@@ -24,7 +24,7 @@
 }
 @media (max-width: 500px){
     input{
-      width: 60%;
+      width: 80%;
       height: 50px;
       border: 1px solid grey;
       border-radius: 10px;
@@ -74,11 +74,15 @@
 </div>
 
 <div class="centerText" style="padding: 30px">
-  Please enter a username and start chatting!
-  <form action="{{ url_for('chat') }}" method="post">
+  Wecome to Dega Chat.
+  <form action="{{ url_for('login') }}" method="post" style="padding: 10px">
     <input type="text" name="username" placeholder="Username">
-    <button class="enter_button">Enter</button>
+    <input type="password" name="password" placeholder="Password">
+    <button class="enter_button">Login</button>
   </form>
+  <div style="padding: 10px;">
+    Not a member yet? Please <a href="{{ url_for('register')}}">Register</a>
+  </div>
 </div>
 
 
