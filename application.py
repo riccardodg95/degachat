@@ -113,8 +113,10 @@ def chat():
 
 @app.route("/logout")
 def logout():
+    user = session['logged_user']
+    session['users'].remove(user);
     session.pop('logged_user', None);
-    session.clear()
+    # session.clear()
     return redirect("/")
 
 
